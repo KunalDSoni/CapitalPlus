@@ -603,8 +603,9 @@ img{max-width:100%;display:block}
 
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
       <li>
-        <a href="products.html">Services <svg class="chev" viewBox="0 0 10 10"><path d="M2.5 4l2.5 2.5 2.5-2.5"/></svg></a>
+        <a href="#">Services <svg class="chev" viewBox="0 0 10 10"><path d="M2.5 4l2.5 2.5 2.5-2.5"/></svg></a>
         <div class="mega-dd">
           <div class="mega-inner">
             <!-- Left: Promo card -->
@@ -637,7 +638,6 @@ img{max-width:100%;display:block}
           </div>
         </div>
       </li>
-      <li><a href="about.html">About Us</a></li>
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
 

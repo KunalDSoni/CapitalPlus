@@ -1204,8 +1204,9 @@
         <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li>
-            <a href="products.html" class="active">Services <svg class="chev" viewBox="0 0 10 10"><path d="M2.5 4l2.5 2.5 2.5-2.5"/></svg></a>
+            <a href="#" class="active">Services <svg class="chev" viewBox="0 0 10 10"><path d="M2.5 4l2.5 2.5 2.5-2.5"/></svg></a>
             <div class="mega-dd">
               <div class="mega-inner">
                 <div class="mega-promo">
@@ -1236,7 +1237,6 @@
               </div>
             </div>
           </li>
-          <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
         <div class="nav-right">
