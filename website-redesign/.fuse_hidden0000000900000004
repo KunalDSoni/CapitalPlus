@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staffing Solutions - Capital Plus</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #0F172A;
+            line-height: 1.6;
+            background: #F5F3FF;
+        }
+
+        /* NAVBAR — Wise-style bold */
+        .nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;transition:box-shadow .3s cubic-bezier(.4,0,.2,1)}
+        .nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
+        .nav-inner{max-width:1320px;width:100%;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:64px}
+        .logo{font-size:1.4rem;font-weight:900;letter-spacing:-.04em;margin-right:48px;white-space:nowrap;text-decoration:none}
+        .logo .c{color:#7C3AED}
+        .logo .p{color:#0F172A}
+        .nav-links{display:flex;align-items:center;gap:0;height:100%;list-style:none}
+        .nav-links>li{height:100%;display:flex;align-items:center;position:relative}
+        .nav-links>li>a{display:flex;align-items:center;gap:5px;padding:0 18px;height:100%;font-size:.82rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#475569;text-decoration:none;transition:color .2s;border-bottom:3px solid transparent;margin-bottom:-1px}
+        .nav-links>li>a:hover{color:#0F172A}
+        .nav-links>li>a.active{color:#7C3AED;border-bottom-color:#7C3AED}
+        .nav-links>li>a svg.chevron{width:10px;height:10px;transition:transform .2s;stroke:currentColor;fill:none;stroke-width:2.5}
+        .nav-links>li:hover>a svg.chevron{transform:rotate(180deg)}
+        .dd-menu{position:absolute;top:100%;left:0;min-width:210px;padding:6px 0;background:#fff;border:1px solid #E2E8F0;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.1);opacity:0;visibility:hidden;transform:translateY(6px);transition:all .2s;pointer-events:none}
+        .nav-links>li:hover>.dd-menu{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+        .dd-menu a{display:block;padding:10px 20px;font-size:.88rem;font-weight:500;color:#475569;text-decoration:none;transition:all .15s}
+        .dd-menu a:hover{background:#F5F3FF;color:#7C3AED;padding-left:24px}
+        .dd-sep{height:1px;background:#E2E8F0;margin:4px 12px}
+        .nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;font-weight:700;font-size:.84rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;text-decoration:none}
+        .btn-ghost{color:#475569;background:transparent;padding:9px 16px}
+        .btn-ghost:hover{color:#7C3AED}
+        .btn-primary{color:#fff;background:#7C3AED;padding:9px 22px;box-shadow:0 2px 8px rgba(124,58,237,.25)}
+        .btn-primary:hover{background:#6D28D9;transform:translateY(-1px);box-shadow:0 4px 16px rgba(124,58,237,.35)}
+        .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto}
+        .hamburger span{display:block;width:20px;height:2px;background:#0F172A;border-radius:2px;transition:.3s}
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #7C3AED;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(109, 40, 217, 0.1));
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* ===== TABS SECTION ===== */
+        .tabs-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .tabs-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .tabs-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #0F172A;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #E9D5FF;
+            margin-bottom: 3rem;
+            justify-content: center;
+        }
+
+        .tab-button {
+            padding: 1.25rem 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #94A3B8;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            margin-bottom: -2px;
+            position: relative;
+        }
+
+        .tab-button.active {
+            color: #7C3AED;
+            border-bottom-color: #7C3AED;
+        }
+
+        .tab-button:hover {
+            color: #7C3AED;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .tab-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #0F172A;
+        }
+
+        .tab-text p {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.875rem 0;
+            color: #0F172A;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            padding-left: 0.5rem;
+            color: #7C3AED;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: #7C3AED;
+            font-weight: 800;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(109, 40, 217, 0.1));
+            border-radius: 6px;
+        }
+
+        .tab-illustration {
+            background: linear-gradient(135deg, #F5F3FF 0%, #E9D5FF 100%);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #7C3AED;
+            border: 2px solid #E9D5FF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-illustration::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s infinite linear;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .tab-illustration span {
+            position: relative;
+            z-index: 2;
+            animation: bounce 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ===== FEATURES GRID ===== */
+        .features-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(109, 40, 217, 0.05) 100%);
+            border-radius: 20px;
+            border: 1px solid #E9D5FF;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: #0F172A;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #E9D5FF;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7C3AED 0%, #6D28D9 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+            border-color: #D8BFD8;
+            transform: translateY(-8px);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #F5F3FF 0%, #E9D5FF 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: #7C3AED;
+            border: 1px solid #E9D5FF;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+            color: #ffffff;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.875rem;
+            color: #0F172A;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .process-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: #0F172A;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            padding: 2rem 1.5rem;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #E9D5FF;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            background: linear-gradient(135deg, #F5F3FF 0%, #ffffff 100%);
+            border-color: #D8BFD8;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(124, 58, 237, 0.1);
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #0F172A;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .process-step:not(:last-child):after {
+            content: "→";
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #C084FC;
+            font-weight: 700;
+        }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 5rem auto;
+            border-radius: 16px;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 30s infinite linear;
+            z-index: 0;
+        }
+
+        .cta-banner > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .cta-buttons-banner {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: #ffffff;
+            color: #7C3AED;
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-light:hover {
+            background: #F5F3FF;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-light:active {
+            transform: translateY(0);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0F172A;
+            color: #ffffff;
+            padding: 3.5rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid #1E293B;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: #ffffff;
+        }
+
+        .footer-section p {
+            color: #94A3B8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-section a {
+            display: block;
+            color: #94A3B8;
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-section a:hover {
+            color: #7C3AED;
+            padding-left: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #1E293B;
+            padding-top: 2rem;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-inner{padding:0 20px}
+            .nav-links,.nav-right{display:none}
+            .hamburger{display:flex}
+            .nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;height:auto;padding:12px 20px;box-shadow:0 12px 40px rgba(0,0,0,.1);border-bottom:1px solid #E2E8F0}
+            .nav.open .nav-links>li{height:auto}
+            .nav.open .nav-links>li>a{height:auto;padding:10px 0;border-bottom:none;margin-bottom:0;text-transform:none;letter-spacing:0;font-size:.95rem}
+            .nav.open .nav-right{display:flex;position:absolute;left:0;right:0;background:#fff;padding:8px 20px 16px}
+            .nav.open .nav-right .btn{flex:1;text-align:center}
+            .dd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;pointer-events:auto;padding:0 0 0 16px;min-width:auto;border-radius:0}
+            .dd-sep{display:none}
+
+            .hero {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tab-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .tab-illustration {
+                min-height: 250px;
+            }
+
+            .process-step:not(:last-child):after {
+                display: none;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-banner {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons-banner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-light {
+                width: 100%;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.875rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-label {
+                font-size: 0.7rem;
+            }
+
+            .tabs-header h2 {
+                font-size: 2rem;
+            }
+
+            .tab-button {
+                padding: 0.875rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .tab-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .features-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .section-title, .process-title {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .process-steps {
+                gap: 1.5rem;
+            }
+
+            .process-step {
+                padding: 1.5rem 1rem;
+            }
+
+            .cta-banner {
+                padding: 2.5rem 1rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.75rem;
+            }
+
+            .footer-container {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="nav" id="mainNav">
+      <div class="nav-inner">
+        <a href="index.html" class="logo"><span class="c">Capital</span><span class="p">Plus</span></a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">The Company</a></li>
+          <li>
+            <a href="#" class="active">Services <svg class="chevron" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3"/></svg></a>
+            <div class="dd-menu">
+              <a href="payroll.html">Payroll Management</a>
+              <a href="staffing.html">Permanent Staffing</a>
+              <a href="staffing.html">Temporary Staffing</a>
+              <div class="dd-sep"></div>
+              <a href="compliance.html">Compliance Solutions</a>
+            </div>
+          </li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="#" class="btn btn-ghost">Login</a>
+          <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="section-label">STAFFING SOLUTIONS</div>
+        <h1>Find the Right <span>Talent</span>. Every Time.</h1>
+        <p>Comprehensive staffing solutions for all organizational levels. Whether you need permanent placements or flexible temporary workers, Capital Plus delivers the right people for your team.</p>
+    </section>
+
+    <!-- TABS SECTION -->
+    <section class="tabs-section">
+        <div class="tabs-header">
+            <h2>A staffing solution for every need</h2>
+        </div>
+
+        <div class="tabs-container">
+            <button class="tab-button active" data-tab="permanent">Permanent Staffing</button>
+            <button class="tab-button" data-tab="temporary">Temporary Staffing</button>
+        </div>
+
+        <!-- Permanent Tab -->
+        <div class="tab-content active" id="permanent-tab">
+            <div class="tab-layout">
+                <div class="tab-text">
+                    <h3>Build Your Permanent Team</h3>
+                    <p>Our experienced recruitment team specializes in finding experienced professionals who are the perfect fit for your organization. We conduct thorough screening, skill evaluation, and cultural fit assessment to ensure long-term success and sustainable growth.</p>
+                    <ul class="feature-list">
+                        <li>Expert candidate screening and evaluation</li>
+                        <li>In-depth skill and background verification</li>
+                        <li>Perfect match between client and candidate needs</li>
+                        <li>Quick turnaround time to placement</li>
+                        <li>Retention support and ongoing assistance</li>
+                    </ul>
+                </div>
+                <div class="tab-illustration">
+                    <span>👥</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Temporary Tab -->
+        <div class="tab-content" id="temporary-tab">
+            <div class="tab-layout">
+                <div class="tab-text">
+                    <h3>Flexible Temporary Solutions</h3>
+                    <p>Need skilled workers for short-term projects or seasonal demands? Our temporary staffing solutions provide experienced professionals without the obligation to absorb them into your permanent workforce. Cost-effective, flexible, and responsive to your needs.</p>
+                    <ul class="feature-list">
+                        <li>Fast placement for short-term projects</li>
+                        <li>No obligation to hire permanently</li>
+                        <li>Cost-effective staffing without overhead</li>
+                        <li>Thorough candidate evaluation and vetting</li>
+                        <li>Flexible scaling up or down as needed</li>
+                    </ul>
+                </div>
+                <div class="tab-illustration">
+                    <span>⏱️</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES GRID -->
+    <section class="features-section">
+        <h2 class="section-title">Why Choose Capital Plus Staffing</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Expert Screening</h3>
+                <p>Our trained recruitment team thoroughly evaluates every candidate to ensure they meet your specific requirements and organizational culture.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Skill Evaluation</h3>
+                <p>We study both your requirements and candidate skills to create ideal pairings that result in high satisfaction and retention.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Quick Turnaround</h3>
+                <p>Experience fast placement times without compromising on quality. We prioritize speed and accuracy in our staffing process.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Cultural Fit</h3>
+                <p>We understand your company culture and values to find candidates who not only have the skills but also align with your team dynamics.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Retention Support</h3>
+                <p>Our ongoing assistance ensures successful onboarding and integration, leading to better retention and employee satisfaction.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Cost Effective</h3>
+                <p>Reduce overhead costs by avoiding permanent employee expenses. Pay only for the talent you need, when you need it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process-section">
+        <h2 class="process-title">How We Staff</h2>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Understand Requirements</h3>
+                <p>We deeply understand your organizational needs, culture, and specific role requirements to find the perfect candidate.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Screen & Shortlist</h3>
+                <p>Our team conducts comprehensive screening and creates a shortlist of the most qualified candidates for your consideration.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Present Best Candidates</h3>
+                <p>We present only the best-qualified candidates who meet your requirements and have the potential for long-term success.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Onboard & Support</h3>
+                <p>We provide ongoing support during onboarding and beyond to ensure a smooth transition and successful integration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <h2>Need the right people for your team?</h2>
+        <p>Let Capital Plus connect you with top talent that drives results and grows with your organization.</p>
+        <div class="cta-buttons-banner">
+            <a href="contact.html" class="btn-light">Get Started</a>
+            <a href="contact.html" class="btn-light">Contact Our Team</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Capital Plus</h3>
+                <p>Modern HR & Payroll Solutions for businesses across India.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="payroll.html">Payroll Management</a>
+                <a href="staffing.html">Staffing Solutions</a>
+                <a href="compliance.html">Compliance Solutions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:info@capitalplusonline.in">info@capitalplusonline.in</a>
+                <a href="tel:+919999999999">+91 99999 99999</a>
+                <p style="margin-top: 1rem;">37, Baleshwar Gold, Opp. India Colony<br>Bopal, Ahmedabad 380058<br>Gujarat, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Capital Plus. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('mainNav');
+        hamburger.addEventListener('click', () => mainNav.classList.toggle('open'));
+        window.addEventListener('scroll', () => mainNav.classList.toggle('scrolled', window.scrollY > 20));
+
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                this.classList.add('active');
+                document.getElementById(tabName + '-tab').classList.add('active');
+            });
+        });
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and process steps
+        document.querySelectorAll('.feature-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

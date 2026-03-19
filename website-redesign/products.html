@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDFC FIRST Bank Products — Capital Plus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#7C3AED;--purple-d:#6D28D9;--purple-dd:#5B21B6;
+  --purple-l:#8B5CF6;--purple-ll:#A78BFA;
+  --purple-bg:#F5F3FF;--purple-100:#EDE9FE;--purple-200:#DDD6FE;
+  --text:#0F172A;--text-2:#475569;--text-3:#94A3B8;
+  --border:#E2E8F0;--white:#FFFFFF;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+  --shadow-l:0 4px 12px rgba(0,0,0,.04),0 24px 64px rgba(0,0,0,.08);
+  --idfc:#9D1D2C;--idfc-l:#B52535;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ═══ NAVBAR ═══ */
+.nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;transition:box-shadow .3s cubic-bezier(.4,0,.2,1)}
+.nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
+.nav-inner{max-width:1320px;width:100%;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:64px}
+.logo{font-size:1.4rem;font-weight:900;letter-spacing:-.04em;margin-right:40px;white-space:nowrap;text-decoration:none}
+.logo .c{color:#7C3AED}.logo .p{color:#0F172A}
+.nav-links{display:flex;align-items:center;gap:4px;height:100%;margin:0;padding:0;list-style:none}
+.nav-links>li{height:100%;display:flex;align-items:center;position:relative}
+.nav-links>li>a{display:flex;align-items:center;gap:5px;padding:6px 14px;height:auto;font-size:.92rem;font-weight:500;color:#0F172A;transition:all .15s;border-radius:100px;border:1.5px solid transparent;text-decoration:none}
+.nav-links>li>a:hover{background:#F5F3FF}
+.nav-links>li>a.active{border-color:#0F172A;background:transparent}
+.nav-links>li>a svg.chev{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s}
+.nav-links>li:hover>a svg.chev{transform:rotate(180deg)}
+.mega-dd{position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 16px 48px rgba(0,0,0,.08);opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.nav-links>li:hover>.mega-dd{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.mega-inner{max-width:1100px;margin:0 auto;padding:40px;display:grid;grid-template-columns:280px 1fr;gap:48px}
+.mega-promo{border-radius:14px;overflow:hidden;background:#F5F3FF;display:flex;flex-direction:column}
+.mega-promo-img{height:140px;background:linear-gradient(135deg,#7C3AED,#8B5CF6);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.9);font-size:2.5rem}
+.mega-promo-body{padding:20px}
+.mega-promo-body h3{font-size:1rem;font-weight:800;color:#0F172A;margin-bottom:6px}
+.mega-promo-body p{font-size:.82rem;color:#475569;line-height:1.5;margin-bottom:14px}
+.mega-promo-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:700;color:#7C3AED;transition:gap .2s;text-decoration:none}
+.mega-promo-link:hover{gap:8px}
+.mega-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.mega-col-head{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:16px}
+.mega-link{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.92rem;font-weight:500;color:#0F172A;transition:color .15s;text-decoration:none}
+.mega-link:hover{color:#7C3AED}
+.mega-link .ml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 22px;border-radius:100px;font-weight:600;font-size:.88rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;text-decoration:none}
+.btn-ghost{color:#475569;background:transparent;padding:9px 14px}
+.btn-ghost:hover{color:#0F172A}
+.btn-primary{color:#fff;background:#7C3AED;box-shadow:0 2px 8px rgba(124,58,237,.2)}
+.btn-primary:hover{background:#6D28D9;box-shadow:0 4px 16px rgba(124,58,237,.3)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto}
+.hamburger span{display:block;width:20px;height:2px;background:#0F172A;border-radius:2px;transition:.3s}
+
+/* ═══ PAGE HERO ═══ */
+.page-hero{
+  padding:100px 0 60px;text-align:center;
+  background:linear-gradient(180deg,var(--purple-bg) 0%,var(--white) 100%);
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;top:-200px;right:-100px;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,58,237,.1) 0%,transparent 70%);filter:blur(40px);pointer-events:none;
+}
+.page-hero .container{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:0 24px}
+.page-hero .partner-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;border-radius:100px;margin-bottom:24px;
+  background:var(--white);border:1px solid var(--border);
+  box-shadow:var(--shadow);font-size:.85rem;font-weight:600;color:var(--text-2);
+}
+.partner-badge .bank-logo{
+  display:inline-flex;align-items:center;gap:6px;
+  font-weight:800;color:var(--idfc);font-size:.85rem;
+}
+.partner-badge .bank-logo .sq{
+  width:20px;height:20px;border-radius:4px;background:var(--idfc);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:.6rem;font-weight:900;
+}
+.page-hero h1{
+  font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;
+  line-height:1.1;letter-spacing:-.035em;margin-bottom:16px;
+}
+.page-hero h1 .highlight{color:var(--purple)}
+.page-hero p{font-size:1.1rem;color:var(--text-2);line-height:1.7;max-width:600px;margin:0 auto}
+
+/* ═══ PRODUCTS GRID ═══ */
+.products{padding:80px 0 120px}
+.products .container{max-width:1200px;margin:0 auto;padding:0 24px}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+
+.product-card{
+  position:relative;padding:32px;border-radius:16px;
+  background:var(--white);border:1px solid var(--border);
+  transition:all .3s var(--ease);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.product-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--idfc),var(--purple));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);
+}
+.product-card:hover{
+  border-color:var(--purple-200);
+  box-shadow:0 8px 32px rgba(124,58,237,.08),0 2px 8px rgba(0,0,0,.04);
+  transform:translateY(-4px);
+}
+.product-card:hover::before{transform:scaleX(1)}
+
+.product-icon{
+  width:52px;height:52px;border-radius:12px;margin-bottom:20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+.product-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+.product-card p{font-size:.9rem;color:var(--text-2);line-height:1.65;flex:1}
+.product-meta{
+  display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:20px;
+  border-top:1px solid var(--border);
+}
+.product-rate{
+  font-size:.78rem;color:var(--text-3);font-weight:500;
+  background:var(--purple-bg);padding:4px 10px;border-radius:6px;
+}
+.product-rate strong{color:var(--purple);font-weight:700}
+.btn-apply{
+  margin-left:auto;display:inline-flex;align-items:center;gap:6px;
+  padding:10px 22px;border-radius:8px;font-size:.84rem;font-weight:700;
+  color:var(--white);background:var(--idfc);
+  border:none;cursor:pointer;font-family:inherit;
+  transition:all .2s var(--ease);
+  box-shadow:0 2px 8px rgba(157,29,44,.2);
+}
+.btn-apply:hover{
+  background:var(--idfc-l);transform:translateY(-1px);
+  box-shadow:0 4px 16px rgba(157,29,44,.3);
+}
+.btn-apply svg{width:14px;height:14px}
+
+/* ═══ BC SERVICES BANNER ═══ */
+.bc-banner{
+  padding:80px 0;
+  background:linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%);
+  position:relative;overflow:hidden;
+}
+.bc-banner::before{
+  content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,58,237,.15) 0%,transparent 60%);
+  transform:translate(-50%,-50%);pointer-events:none;
+}
+.bc-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px}
+.bc-header{text-align:center;margin-bottom:48px}
+.bc-header h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:var(--white);margin-bottom:12px}
+.bc-header p{font-size:1rem;color:rgba(255,255,255,.55)}
+.bc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.bc-card{
+  text-align:center;padding:32px 20px;border-radius:14px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);transition:all .3s var(--ease);
+}
+.bc-card:hover{background:rgba(255,255,255,.08);border-color:rgba(124,58,237,.4);transform:translateY(-4px)}
+.bc-card .bc-icon{font-size:2rem;margin-bottom:12px}
+.bc-card h4{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.bc-card p{font-size:.8rem;color:rgba(255,255,255,.5)}
+
+/* ═══ FOOTER ═══ */
+.footer{background:var(--text);color:rgba(255,255,255,.6);padding:80px 0 32px}
+.footer-grid{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
+.footer-brand .logo{font-size:1.3rem;margin-bottom:16px}
+.footer-brand .logo .c{color:var(--purple-l)}.footer-brand .logo .p{color:rgba(255,255,255,.9)}
+.footer-brand>p{font-size:.88rem;line-height:1.7;max-width:280px}
+.footer h4{color:rgba(255,255,255,.9);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
+.footer ul li{margin-bottom:12px}.footer ul a{font-size:.88rem;transition:color .2s}
+.footer ul a:hover{color:var(--purple-l)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:24px 24px 0;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+
+/* ═══ SCROLL REVEAL ═══ */
+.animate{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.animate.visible{opacity:1;transform:translateY(0)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .products-grid{grid-template-columns:1fr 1fr}
+  .bc-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .page-hero h1{font-size:clamp(1.75rem,4vw,2.5rem)}
+  .page-hero p{font-size:1rem}
+}
+@media(max-width:768px){
+  .nav-inner{padding:0 20px}
+  .nav-links,.nav-right{display:none}
+  .hamburger{display:flex}
+  .nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--white);height:auto;padding:12px 20px;box-shadow:var(--shadow-l);border-bottom:1px solid var(--border)}
+  .nav.open .nav-links>li{height:auto}
+  .nav.open .nav-links>li>a{height:auto;padding:10px 0;border-bottom:none;margin-bottom:0;text-transform:none;letter-spacing:0;font-size:.95rem}
+  .nav.open .nav-right{display:flex;position:absolute;left:0;right:0;background:var(--white);padding:8px 20px 16px}
+  .nav.open .nav-right .btn{flex:1;text-align:center}
+  .mega-dd{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;border-bottom:none;pointer-events:auto;width:100%;margin-top:8px}
+  .mega-inner{grid-template-columns:1fr;padding:16px 0;gap:16px}
+  .mega-promo{display:none}
+  .mega-cols{grid-template-columns:1fr;gap:16px}
+  .mega-col-head{margin-bottom:8px}
+  .mega-link{padding:6px 0}
+
+  .page-hero{padding:60px 20px 40px}
+  .page-hero h1{font-size:2rem}
+  .page-hero p{font-size:0.95rem}
+  .partner-badge{padding:6px 12px;font-size:0.75rem;margin-bottom:16px}
+
+  .products{padding:60px 0 80px}
+  .products .container{padding:0 20px}
+  .products-grid{grid-template-columns:1fr;gap:16px}
+  .product-card{padding:24px}
+  .product-icon{width:48px;height:48px;margin-bottom:16px}
+  .product-card h3{font-size:1rem}
+  .product-card p{font-size:0.85rem}
+  .product-meta{gap:8px;margin-top:16px;padding-top:16px}
+  .product-rate{font-size:0.7rem;padding:3px 8px}
+  .btn-apply{padding:8px 16px;font-size:0.75rem}
+
+  .bc-banner{padding:60px 0}
+  .bc-inner{padding:0 20px}
+  .bc-header h2{font-size:1.75rem;margin-bottom:8px}
+  .bc-header p{font-size:0.9rem}
+  .bc-grid{grid-template-columns:1fr;gap:12px}
+  .bc-card{padding:24px 16px}
+  .bc-card .bc-icon{font-size:1.5rem;margin-bottom:8px}
+  .bc-card h4{font-size:0.9rem;margin-bottom:4px}
+  .bc-card p{font-size:0.75rem}
+
+  .footer-grid{grid-template-columns:1fr;gap:32px;margin-bottom:48px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center;font-size:0.75rem}
+}
+
+@media(max-width:480px){
+  .nav-inner{padding:0 16px;height:56px}
+  .logo{font-size:1.1rem;margin-right:20px}
+
+  .page-hero{padding:40px 16px 30px}
+  .page-hero .container{padding:0 16px}
+  .page-hero h1{font-size:1.5rem;margin-bottom:12px;letter-spacing:-0.5px}
+  .page-hero p{font-size:0.85rem;line-height:1.5}
+  .partner-badge{padding:4px 10px;font-size:0.65rem;gap:6px;margin-bottom:12px}
+  .partner-badge .bank-logo .sq{width:16px;height:16px;font-size:0.5rem}
+
+  .products{padding:40px 0 60px}
+  .products .container{padding:0 16px}
+  .products-grid{grid-template-columns:1fr;gap:12px}
+  .product-card{padding:16px;border-radius:12px}
+  .product-icon{width:40px;height:40px;font-size:1.25rem;margin-bottom:12px}
+  .product-card h3{font-size:0.9rem}
+  .product-card p{font-size:0.8rem;line-height:1.5}
+  .product-meta{gap:6px;margin-top:12px;padding-top:12px}
+  .product-rate{font-size:0.65rem;padding:2px 6px}
+  .btn-apply{padding:6px 12px;font-size:0.7rem;margin-left:0}
+
+  .bc-banner{padding:40px 0}
+  .bc-inner{padding:0 16px}
+  .bc-header{margin-bottom:32px}
+  .bc-header h2{font-size:1.25rem;margin-bottom:6px;letter-spacing:-0.5px}
+  .bc-header p{font-size:0.8rem}
+  .bc-grid{grid-template-columns:1fr;gap:8px}
+  .bc-card{padding:16px 12px;border-radius:10px}
+  .bc-card .bc-icon{font-size:1.25rem;margin-bottom:6px}
+  .bc-card h4{font-size:0.8rem;margin-bottom:3px}
+  .bc-card p{font-size:0.7rem}
+
+  .footer{padding:40px 16px 16px}
+  .footer-grid{grid-template-columns:1fr;gap:20px;margin-bottom:24px}
+  .footer-brand .logo{font-size:1rem;margin-bottom:12px}
+  .footer-brand>p{font-size:0.75rem;line-height:1.6}
+  .footer h4{font-size:0.7rem;margin-bottom:12px}
+  .footer ul li{margin-bottom:6px}
+  .footer ul a{font-size:0.75rem}
+  .footer-bottom{gap:8px;font-size:0.7rem;padding:12px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="c">Capital</span><span class="p">Plus</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">The Company</a></li>
+      <li>
+        <a href="#" class="active">Solutions <svg class="chev" viewBox="0 0 10 10"><path d="M2.5 4l2.5 2.5 2.5-2.5"/></svg></a>
+        <div class="mega-dd">
+          <div class="mega-inner">
+            <div class="mega-promo">
+              <div class="mega-promo-img">🏦</div>
+              <div class="mega-promo-body">
+                <h3>IDFC FIRST Bank Products</h3>
+                <p>As an authorized Business Correspondent, we bring 14 financial products to your doorstep.</p>
+                <a href="products.html" class="mega-promo-link">Explore →</a>
+              </div>
+            </div>
+            <div class="mega-cols">
+              <div>
+                <div class="mega-col-head">IDFC Bank Products</div>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#7C3AED"></span> Personal Loan</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#3B82F6"></span> Home Loan</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#10B981"></span> Car &amp; Vehicle Loans</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#F59E0B"></span> Gold Loan</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#EC4899"></span> Two Wheeler Loan</a>
+                <a href="products.html" class="mega-link" style="color:#7C3AED;font-weight:700;margin-top:4px">View all 14 products →</a>
+              </div>
+              <div>
+                <div class="mega-col-head">HR Services</div>
+                <a href="payroll.html" class="mega-link"><span class="ml-dot" style="background:#7C3AED"></span> Payroll Management</a>
+                <a href="staffing.html" class="mega-link"><span class="ml-dot" style="background:#3B82F6"></span> Staffing Solutions</a>
+                <a href="compliance.html" class="mega-link"><span class="ml-dot" style="background:#F59E0B"></span> Compliance Solutions</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#" class="btn btn-ghost">Log in</a>
+      <a href="contact.html" class="btn btn-primary">Sign up</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="partner-badge">
+      <span class="bank-logo"><span class="sq">IF</span> IDFC FIRST Bank</span>
+      <span>×</span>
+      <span style="color:var(--purple);font-weight:800">Capital Plus</span>
+    </div>
+    <h1>IDFC FIRST Bank <span class="highlight">Product List</span></h1>
+    <p>As an authorized Business Correspondent of IDFC FIRST Bank, Capital Plus brings you a complete range of financial products. Apply directly — we'll connect you to the bank.</p>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTS GRID ═══ -->
+<section class="products">
+  <div class="container">
+    <div class="products-grid">
+
+      <!-- 1. Personal Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#EDE9FE">💰</div>
+        <h3>Personal Loan</h3>
+        <p>Get instant personal loans with minimal documentation. Competitive interest rates and flexible EMI options for all your personal needs.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/personal-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 2. Consumer Durable Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#DBEAFE">🛒</div>
+        <h3>Consumer Durable Loan</h3>
+        <p>Convert your big buys into small affordable EMIs. Electronics, gadgets, home appliances — flexible tenures up to 36 months for ₹5,000 to ₹8 Lakhs.</p>
+        <div class="product-meta">
+          <span class="product-rate">Up to <strong>36 months</strong></span>
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/consumer-durable-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 3. Home Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#FEF3C7">🏠</div>
+        <h3>Home Loan</h3>
+        <p>Make your dream home a reality with IDFC FIRST Bank Home Loans. Attractive interest rates and long tenure options to suit your budget.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/home-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 4. Loan Against Property -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#E0E7FF">🏢</div>
+        <h3>Loan Against Property</h3>
+        <p>Unlock the value of your property with a loan against property. Get funds for business expansion, education, or any other need.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/loan-against-property" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 5. Gold Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#FEF9C3">✨</div>
+        <h3>Gold Loan</h3>
+        <p>Get instant funds against your gold jewellery. Quick disbursement, transparent valuation, and competitive interest rates.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/gold-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 6. New Car Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#DCFCE7">🚗</div>
+        <h3>New Car Loan</h3>
+        <p>Bring home your dream car with hassle-free car loans. Flexible EMI schemes and tenures up to 10 years. Doorstep loan assistance available.</p>
+        <div class="product-meta">
+          <span class="product-rate">Up to <strong>10 years</strong></span>
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/car-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 7. Pre-Owned Car Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#F3E8FF">🔑</div>
+        <h3>Pre-Owned Car Loan</h3>
+        <p>Best interest rates on pre-owned car loans — starting from 11.99% (repurchase) &amp; 13.99% (refinance). Loan up to 200% LTV with minimal documentation.</p>
+        <div class="product-meta">
+          <span class="product-rate">From <strong>11.99%</strong></span>
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/used-car-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 8. Micro Enterprise Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#FFF7ED">🏪</div>
+        <h3>Micro Enterprise Loan</h3>
+        <p>Fuel your small business growth with micro enterprise loans. Designed for MSMEs with simple documentation and quick processing.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/business-banking/loans/micro-enterprise-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 9. Two Wheeler Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#FCE7F3">🏍️</div>
+        <h3>Two Wheeler Loan</h3>
+        <p>Ride home your dream bike or scooter. Fully digital process with competitive rates — Commuter from 18.99%, Premium from 8.5%.</p>
+        <div class="product-meta">
+          <span class="product-rate">From <strong>8.5%</strong></span>
+          <a href="https://www.idfcfirst.bank.in/personal-banking/loans/two-wheeler-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 10. Commercial Vehicle Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#ECFDF5">🚛</div>
+        <h3>Commercial Vehicle Loan</h3>
+        <p>Multiple loan options with attractive interest rates to build and grow your transport business. Zero hidden charges, complete transparency.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/business-banking/loans/commercial-vehicle-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 11. Tractor Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#F0FDF4">🚜</div>
+        <h3>Tractor Loan</h3>
+        <p>Empower your farming with easy tractor loans. Designed for India's agricultural community with flexible repayment options.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/business-banking/loans/tractor-loan" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 12. Kisan Credit Card Loan -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#FEF3C7">🌾</div>
+        <h3>Kisan Credit Card Loan</h3>
+        <p>Financial support for farmers — access credit for crop production, post-harvest expenses, and allied agricultural activities.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/business-banking/loans/kisan-credit-card" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 13. Sakhi Shakti - JLG Loan for Women -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#FDF2F8">👩</div>
+        <h3>Sakhi Shakti — JLG Loan for Women</h3>
+        <p>Empowering women entrepreneurs through Joint Liability Group loans. Supporting financial independence and community growth.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in" target="_blank" rel="noopener" class="btn-apply">Apply Loan <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 14. Credit Card -->
+      <div class="product-card animate">
+        <div class="product-icon" style="background:#EDE9FE">💳</div>
+        <h3>Credit Card</h3>
+        <p>IDFC FIRST Bank Credit Cards with lifetime free benefits, reward points, and exclusive offers. Choose the card that fits your lifestyle.</p>
+        <div class="product-meta">
+          <a href="https://www.idfcfirst.bank.in/credit-card" target="_blank" rel="noopener" class="btn-apply">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BC SERVICES BANNER ═══ -->
+<section class="bc-banner">
+  <div class="bc-inner">
+    <div class="bc-header">
+      <h2>Business Correspondent Services</h2>
+      <p>Capital Plus acts as an authorized Business Correspondent for IDFC FIRST Bank</p>
+    </div>
+    <div class="bc-grid">
+      <div class="bc-card"><div class="bc-icon">📋</div><h4>Payroll Management</h4><p>End-to-end payroll processing</p></div>
+      <div class="bc-card"><div class="bc-icon">👥</div><h4>Staffing Solutions</h4><p>Permanent &amp; temporary staffing</p></div>
+      <div class="bc-card"><div class="bc-icon">🛡️</div><h4>Compliance Solutions</h4><p>Statutory compliance management</p></div>
+      <div class="bc-card"><div class="bc-icon">🏦</div><h4>IDFC FIRST Bank Products</h4><p>Full range of financial products</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo"><span class="c">Capital</span><span class="p">Plus</span></div>
+      <p>Authorized Business Correspondent of IDFC FIRST Bank. Modern HR, Payroll &amp; Financial solutions for India's growing businesses.</p>
+    </div>
+    <div>
+      <h4>Products</h4>
+      <ul>
+        <li><a href="products.html">IDFC FIRST Bank Loans</a></li>
+        <li><a href="payroll.html">Payroll Management</a></li>
+        <li><a href="staffing.html">Staffing Solutions</a></li>
+        <li><a href="compliance.html">Compliance Solutions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">The Company</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>Ground Floor, Raja Complex</li>
+        <li>Vijay Cross Roads, Navrangpura</li>
+        <li>Ahmedabad — 380 009</li>
+        <li style="margin-top:8px"><a href="tel:+919824065642" style="color:var(--purple-l)">+91 98240 65642</a></li>
+        <li><a href="tel:+919227250004" style="color:var(--purple-l)">+91 92272 50004</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright &copy; 2017 Capital Plus. All Rights Reserved.</p>
+    <p>Business Correspondent of IDFC FIRST Bank</p>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const mainNav=document.getElementById('mainNav');
+hamburger.addEventListener('click',()=>mainNav.classList.toggle('open'));
+window.addEventListener('scroll',()=>mainNav.classList.toggle('scrolled',window.scrollY>20));
+
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.animate').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

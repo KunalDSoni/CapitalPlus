@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Capital Plus - Modern HR & Payroll Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --purple: #7C3AED;
+      --purple-d: #6D28D9;
+      --purple-dd: #5B21B6;
+      --purple-l: #8B5CF6;
+      --purple-bg: #F5F3FF;
+      --purple-100: #EDE9FE;
+      --purple-200: #DDD6FE;
+      --text: #0F172A;
+      --text-2: #475569;
+      --text-3: #94A3B8;
+      --border: #E2E8F0;
+      --bg-light: #FFFFFF;
+      --bg-dark: #0F172A;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAVBAR — Wise-style bold */
+    .nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;transition:box-shadow .3s cubic-bezier(.4,0,.2,1)}
+    .nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
+    .nav-inner{max-width:1320px;width:100%;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:64px}
+    .logo{font-size:1.4rem;font-weight:900;letter-spacing:-.04em;margin-right:48px;white-space:nowrap;text-decoration:none}
+    .logo .c{color:#7C3AED}
+    .logo .p{color:#0F172A}
+    .nav-links{display:flex;align-items:center;gap:0;height:100%;list-style:none}
+    .nav-links>li{height:100%;display:flex;align-items:center;position:relative}
+    .nav-links>li>a{display:flex;align-items:center;gap:5px;padding:0 18px;height:100%;font-size:.82rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#475569;text-decoration:none;transition:color .2s;border-bottom:3px solid transparent;margin-bottom:-1px}
+    .nav-links>li>a:hover{color:#0F172A}
+    .nav-links>li>a.active{color:#7C3AED;border-bottom-color:#7C3AED}
+    .nav-links>li>a svg.chevron{width:10px;height:10px;transition:transform .2s;stroke:currentColor;fill:none;stroke-width:2.5}
+    .nav-links>li:hover>a svg.chevron{transform:rotate(180deg)}
+    .dd-menu{position:absolute;top:100%;left:0;min-width:210px;padding:6px 0;background:#fff;border:1px solid #E2E8F0;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.1);opacity:0;visibility:hidden;transform:translateY(6px);transition:all .2s;pointer-events:none}
+    .nav-links>li:hover>.dd-menu{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+    .dd-menu a{display:block;padding:10px 20px;font-size:.88rem;font-weight:500;color:#475569;text-decoration:none;transition:all .15s}
+    .dd-menu a:hover{background:#F5F3FF;color:#7C3AED;padding-left:24px}
+    .dd-sep{height:1px;background:#E2E8F0;margin:4px 12px}
+    .nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;font-weight:700;font-size:.84rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;text-decoration:none}
+    .btn-ghost{color:#475569;background:transparent;padding:9px 16px}
+    .btn-ghost:hover{color:#7C3AED}
+    .btn-primary{color:#fff;background:#7C3AED;padding:9px 22px;box-shadow:0 2px 8px rgba(124,58,237,.25)}
+    .btn-primary:hover{background:#6D28D9;transform:translateY(-1px);box-shadow:0 4px 16px rgba(124,58,237,.35)}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto}
+    .hamburger span{display:block;width:20px;height:2px;background:#0F172A;border-radius:2px;transition:.3s}
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      text-align: center;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--purple-dd), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-2);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ==================== CONTACT SECTION ==================== */
+    .contact-section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    /* FORM */
+    .contact-form-wrapper {
+      background: var(--bg-light);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-form-title {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .form-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group.full {
+      grid-template-columns: 1fr;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: all 0.3s ease;
+      background: var(--bg-light);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      background: white;
+    }
+
+    .form-textarea {
+      grid-column: 1 / -1;
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%237C3AED" stroke-width="2"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 20px;
+      padding-right: 2.5rem;
+    }
+
+    .form-submit {
+      grid-column: 1 / -1;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--purple), var(--purple-d));
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(124, 58, 237, 0.4);
+    }
+
+    .form-submit:active {
+      transform: translateY(0);
+    }
+
+    .form-submit.success {
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    /* CONTACT INFO */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-info-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card {
+      background: var(--purple-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--purple-200);
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: var(--purple);
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .info-card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--purple-dd);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-card-value {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .info-card-value a {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .info-card-value a:hover {
+      color: var(--purple-d);
+    }
+
+    .map-placeholder {
+      background: var(--purple-100);
+      border: 1px solid var(--purple-200);
+      border-radius: 12px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-2);
+      font-weight: 500;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* ==================== CTA BANNER ==================== */
+    .cta-banner {
+      margin: 6rem auto 0;
+      background: linear-gradient(135deg, var(--purple-dd), var(--purple));
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 12px;
+      color: white;
+      max-width: 1200px;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+
+    .cta-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .cta-banner p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+    }
+
+    .cta-btn {
+      background: white;
+      color: var(--purple);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background: var(--bg-dark);
+      color: #E2E8F0;
+      padding: 3rem 2rem;
+      margin-top: 6rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: #E2E8F0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-section a:hover {
+      color: var(--purple-l);
+    }
+
+    .footer-section p {
+      color: #94A3B8;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: #94A3B8;
+      font-size: 0.9rem;
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==================== MOBILE RESPONSIVE ==================== */
+    @media(max-width:768px){
+      .nav-inner{padding:0 20px}
+      .nav-links,.nav-right{display:none}
+      .hamburger{display:flex}
+      .nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;height:auto;padding:12px 20px;box-shadow:0 12px 40px rgba(0,0,0,.1);border-bottom:1px solid #E2E8F0}
+      .nav.open .nav-links>li{height:auto}
+      .nav.open .nav-links>li>a{height:auto;padding:10px 0;border-bottom:none;margin-bottom:0;text-transform:none;letter-spacing:0;font-size:.95rem}
+      .nav.open .nav-right{display:flex;position:absolute;left:0;right:0;background:#fff;padding:8px 20px 16px}
+      .nav.open .nav-right .btn{flex:1;text-align:center}
+      .dd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;pointer-events:auto;padding:0 0 0 16px;min-width:auto;border-radius:0}
+      .dd-sep{display:none}
+
+      .hero {
+        padding: 4rem 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+      }
+
+      .contact-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .form-group {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-banner h2 {
+        font-size: 1.5rem;
+      }
+
+      .contact-form-wrapper {
+        padding: 2rem;
+      }
+
+      .info-card {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .navbar-container {
+        padding: 0 1rem;
+      }
+
+      .contact-form-wrapper,
+      .info-card {
+        padding: 1.5rem;
+      }
+
+      .cta-banner {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="c">Capital</span><span class="p">Plus</span></a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">The Company</a></li>
+        <li>
+          <a href="#">Services <svg class="chevron" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3"/></svg></a>
+          <div class="dd-menu">
+            <a href="payroll.html">Payroll Management</a>
+            <a href="staffing.html">Permanent Staffing</a>
+            <a href="staffing.html">Temporary Staffing</a>
+            <div class="dd-sep"></div>
+            <a href="compliance.html">Compliance Solutions</a>
+          </div>
+        </li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#" class="btn btn-ghost">Login</a>
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Let's Talk</h1>
+    <p>Have questions about Capital Plus? We'd love to hear from you. Reach out and let's discuss how we can help transform your HR operations.</p>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+    <!-- FORM -->
+    <div class="contact-form-wrapper">
+      <h2 class="contact-form-title">Send us a message</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder="Full Name" required>
+          <input type="email" class="form-input" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" class="form-input" placeholder="Phone Number" required>
+          <input type="text" class="form-input" placeholder="Company Name" required>
+        </div>
+        <div class="form-group full">
+          <select class="form-select" required>
+            <option value="" disabled selected>Select a Service</option>
+            <option value="payroll">Payroll Management</option>
+            <option value="staffing">Staffing Solutions</option>
+            <option value="compliance">Compliance & Legal</option>
+            <option value="general">General Inquiry</option>
+            <option value="partnership">Partnership Opportunity</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <textarea class="form-textarea" placeholder="Tell us more about your needs..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+        <p id="formStatus" style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--text-2); display: none;"></p>
+      </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div class="contact-info">
+      <div>
+        <h2 class="contact-info-title">Get in Touch</h2>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">📍 Office Address</div>
+        <div class="info-card-value">37 Baleshwar Gold<br>Ahmedabad, India</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">✉️ Email</div>
+        <div class="info-card-value">
+          <a href="mailto:info@capitalplusonline.in">info@capitalplusonline.in</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">📞 Phone</div>
+        <div class="info-card-value">Available upon inquiry<br><a href="#contactForm">Schedule a call</a></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">🕒 Business Hours</div>
+        <div class="info-card-value">Monday – Saturday<br>9:00 AM – 6:00 PM IST</div>
+      </div>
+      <div class="map-placeholder">
+        📍 Map coming soon — 37 Baleshwar Gold, Ahmedabad
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Prefer a Quick Call?</h2>
+    <p>Our team is ready to discuss your HR & Payroll needs. Schedule a demo or consultation today.</p>
+    <button class="cta-btn" onclick="scrollToForm()">Get in Touch</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Capital Plus</h3>
+        <p>Modern HR & Payroll platform designed for Indian businesses. Simplify operations, ensure compliance, and focus on growth.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="payroll.html">Payroll Management</a></li>
+          <li><a href="staffing.html">Staffing Solutions</a></li>
+          <li><a href="compliance.html">Compliance</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Capital Plus. All rights reserved. | Built for Indian businesses, by design.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+    hamburger.addEventListener('click', () => mainNav.classList.toggle('open'));
+    window.addEventListener('scroll', () => mainNav.classList.toggle('scrolled', window.scrollY > 20));
+
+    // Form Submission Handler
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = {
+        name: contactForm.querySelector('input[placeholder="Full Name"]').value,
+        email: contactForm.querySelector('input[placeholder="Email Address"]').value,
+        phone: contactForm.querySelector('input[placeholder="Phone Number"]').value,
+        company: contactForm.querySelector('input[placeholder="Company Name"]').value,
+        service: contactForm.querySelector('select').value,
+        message: contactForm.querySelector('textarea').value,
+        timestamp: new Date().toISOString()
+      };
+
+      console.log('Form submitted:', formData);
+
+      // Show success message
+      const submitBtn = contactForm.querySelector('.form-submit');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '✓ Message Sent!';
+      submitBtn.classList.add('success');
+
+      formStatus.style.display = 'block';
+      formStatus.textContent = 'Thank you for reaching out! We will get back to you shortly.';
+      formStatus.style.color = '#10B981';
+
+      // Reset form
+      contactForm.reset();
+
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('success');
+        formStatus.style.display = 'none';
+      }, 3000);
+    });
+
+    // Scroll to form function
+    function scrollToForm() {
+      document.querySelector('.contact-form-wrapper').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
