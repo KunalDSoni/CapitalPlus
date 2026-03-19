@@ -863,7 +863,7 @@
         }
 
         .footer-logo {
-            font-size: 1.3rem;
+            font-size: 20px;
             font-weight: 800;
             margin-bottom: 20px;
             display: flex;
@@ -956,7 +956,7 @@
             }
 
             .logo {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 margin-right: 24px;
             }
 
