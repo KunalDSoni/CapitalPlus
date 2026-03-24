@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Capital Plus - Modern HR & Payroll Platform</title>
+  <title>Contact Capital Plus - Authorized Business Correspondent | IDFC FIRST Bank</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -820,7 +820,7 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <h1>Let's Talk</h1>
-    <p>Have questions about Capital Plus? We'd love to hear from you. Reach out and let's discuss how we can help transform your HR operations.</p>
+    <p>Have questions about Capital Plus? We'd love to hear from you. Reach out and let's discuss how we can help with your financial needs.</p>
   </section>
 
   <!-- CONTACT SECTION -->
@@ -828,12 +828,11 @@
     <!-- FORM -->
     <div class="contact-form-wrapper">
       <h2 class="contact-form-title">Send us a message</h2>
-      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <!-- Web3Forms access key — emails go to info@capitalplusonline.in -->
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-        <input type="hidden" name="subject" value="New Contact Form Submission — Capital Plus">
-        <input type="hidden" name="from_name" value="Capital Plus Website">
-        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+      <form id="contactForm" action="https://formsubmit.co/writeonkd@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Contact Form Submission — Capital Plus">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none">
         <div class="form-group">
           <input type="text" name="name" class="form-input" placeholder="Full Name" required>
           <input type="email" name="email" class="form-input" placeholder="Email Address" required>
@@ -886,7 +885,7 @@
   <!-- CTA BANNER -->
   <section class="cta-banner">
     <h2>Prefer a Quick Call?</h2>
-    <p>Our team is ready to discuss your HR & Payroll needs. Schedule a demo or consultation today.</p>
+    <p>Our team is ready to discuss your financial needs. Schedule a consultation today.</p>
     <button class="cta-btn" onclick="scrollToForm()">Get in Touch</button>
   </section>
 
@@ -895,7 +894,7 @@
     <div class="footer-container">
       <div class="footer-section">
         <h3>Capital Plus</h3>
-        <p>Modern HR & Payroll platform designed for Indian businesses. Simplify operations, ensure compliance, and focus on growth.</p>
+        <p>Authorized Business Correspondent of IDFC FIRST Bank. Bringing financial products to your doorstep across India.</p>
       </div>
       <div class="footer-section">
         <h3>Product</h3>
@@ -934,7 +933,7 @@
     hamburger.addEventListener('click', () => mainNav.classList.toggle('open'));
     window.addEventListener('scroll', () => mainNav.classList.toggle('scrolled', window.scrollY > 20));
 
-    // Form Submission Handler (Web3Forms)
+    // Form Submission Handler (Formsubmit.co)
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
     const submitBtn = contactForm.querySelector('.form-submit');
@@ -946,13 +945,13 @@
       submitBtn.textContent = 'Sending...';
 
       try {
-        const response = await fetch('https://api.web3forms.com/submit', {
+        const response = await fetch(contactForm.action, {
           method: 'POST',
-          body: new FormData(contactForm)
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
         });
-        const data = await response.json();
 
-        if (data.success) {
+        if (response.ok) {
           submitBtn.textContent = '\u2713 Message Sent!';
           submitBtn.classList.add('success');
           formStatus.style.display = 'block';
@@ -960,7 +959,7 @@
           formStatus.style.color = '#10B981';
           contactForm.reset();
         } else {
-          throw new Error(data.message || 'Something went wrong');
+          throw new Error('Something went wrong');
         }
       } catch (err) {
         submitBtn.textContent = 'Failed — Try Again';
