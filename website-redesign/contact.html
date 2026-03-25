@@ -828,10 +828,7 @@
     <!-- FORM -->
     <div class="contact-form-wrapper">
       <h2 class="contact-form-title">Send us a message</h2>
-      <form id="contactForm" action="https://formsubmit.co/writeonkd@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New Contact Form Submission — Capital Plus">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
+      <form id="contactForm" action="send-mail.php" method="POST">
         <input type="text" name="_honey" style="display:none">
         <div class="form-group">
           <input type="text" name="name" class="form-input" placeholder="Full Name" required>
@@ -933,7 +930,7 @@
     hamburger.addEventListener('click', () => mainNav.classList.toggle('open'));
     window.addEventListener('scroll', () => mainNav.classList.toggle('scrolled', window.scrollY > 20));
 
-    // Form Submission Handler (Formsubmit.co)
+    // Form Submission Handler (PHP Mail)
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
     const submitBtn = contactForm.querySelector('.form-submit');
@@ -947,19 +944,20 @@
       try {
         const response = await fetch(contactForm.action, {
           method: 'POST',
-          body: new FormData(contactForm),
-          headers: { 'Accept': 'application/json' }
+          body: new FormData(contactForm)
         });
 
-        if (response.ok) {
+        const data = await response.json();
+
+        if (data.success) {
           submitBtn.textContent = '\u2713 Message Sent!';
           submitBtn.classList.add('success');
           formStatus.style.display = 'block';
-          formStatus.textContent = 'Thank you for reaching out! We will get back to you shortly.';
+          formStatus.textContent = data.message;
           formStatus.style.color = '#10B981';
           contactForm.reset();
         } else {
-          throw new Error('Something went wrong');
+          throw new Error(data.message || 'Something went wrong');
         }
       } catch (err) {
         submitBtn.textContent = 'Failed — Try Again';
