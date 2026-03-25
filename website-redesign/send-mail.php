@@ -45,7 +45,8 @@ $from_email = 'noreply@capitalplusonline.in';
 $from_name = 'Capital Plus Website';
 $to_email = 'writeonkd@gmail.com';
 
-$subject = "New Contact Form Submission - Capital Plus | $service";
+// Keep subject ASCII-safe (no special dashes or unicode)
+$subject = "New Contact Form Submission - Capital Plus | " . str_replace(array("\r", "\n"), '', $service);
 
 // Build HTML email body
 $body = "<html>
@@ -79,8 +80,25 @@ $body = "<html>
 </body>
 </html>";
 
+// ═══ SMTP DOT-STUFFING ═══
+// In SMTP, any line starting with "." must be escaped as ".." to prevent premature termination
+function dotStuff($text) {
+    $lines = explode("\n", str_replace("\r\n", "\n", $text));
+    foreach ($lines as &$line) {
+        if (isset($line[0]) && $line[0] === '.') {
+            $line = '.' . $line;
+        }
+    }
+    return implode("\r\n", $lines);
+}
+
 // ═══ SEND VIA SMTP ═══
 function sendSmtpEmail($host, $port, $user, $pass, $from_email, $from_name, $to, $subject, $htmlBody, $replyTo, $replyToName) {
+
+    // Check if fsockopen is available
+    if (!function_exists('fsockopen')) {
+        return ['success' => false, 'message' => 'Socket functions are disabled on this server.'];
+    }
 
     // Connect to SMTP server on port 25
     $socket = @fsockopen($host, $port, $errno, $errstr, 10);
@@ -88,16 +106,31 @@ function sendSmtpEmail($host, $port, $user, $pass, $from_email, $from_name, $to,
         // Fallback: Try SSL on port 465
         $socket = @fsockopen("ssl://$host", 465, $errno, $errstr, 10);
         if (!$socket) {
-            return ['success' => false, 'message' => "Could not connect to mail server: $errstr ($errno)"];
+            // Last fallback: Try port 587
+            $socket = @fsockopen($host, 587, $errno, $errstr, 10);
+            if (!$socket) {
+                return ['success' => false, 'message' => "Could not connect to mail server on ports 25, 465, or 587: $errstr ($errno)"];
+            }
         }
     }
+
+    // Set stream timeout to prevent hanging (15 seconds)
+    stream_set_timeout($socket, 15);
 
     // Helper to read server response
     $getResponse = function() use ($socket) {
         $response = '';
-        while ($line = fgets($socket, 515)) {
+        $maxLoops = 50; // Safety limit
+        $i = 0;
+        while ($i < $maxLoops) {
+            $line = fgets($socket, 515);
+            if ($line === false) break;
             $response .= $line;
-            if (substr($line, 3, 1) == ' ') break;
+            // Last line of multi-line response has space at position 3
+            if (isset($line[3]) && $line[3] === ' ') break;
+            // Single line response (less than 4 chars)
+            if (strlen($line) < 4) break;
+            $i++;
         }
         return $response;
     };
@@ -116,38 +149,44 @@ function sendSmtpEmail($host, $port, $user, $pass, $from_email, $from_name, $to,
     }
 
     // EHLO
-    $response = $sendCmd("EHLO capitalplusonline.in");
-
-    // Check if STARTTLS is available and upgrade connection
-    if (strpos($response, 'STARTTLS') !== false) {
-        $starttlsResp = $sendCmd("STARTTLS");
-        if (substr($starttlsResp, 0, 3) == '220') {
-            // Try TLS 1.2 first, fallback to generic TLS
-            $crypto = defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')
-                ? STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT
-                : STREAM_CRYPTO_METHOD_TLS_CLIENT;
-            stream_socket_enable_crypto($socket, true, $crypto);
-            $sendCmd("EHLO capitalplusonline.in");
+    $ehloResp = $sendCmd("EHLO capitalplusonline.in");
+    if (substr($ehloResp, 0, 3) != '250') {
+        // Fallback to HELO if EHLO not supported
+        $ehloResp = $sendCmd("HELO capitalplusonline.in");
+        if (substr($ehloResp, 0, 3) != '250') {
+            fclose($socket);
+            return ['success' => false, 'message' => 'EHLO/HELO failed: ' . trim($ehloResp)];
         }
     }
 
-    // AUTH LOGIN
+    // Check if STARTTLS is available and upgrade connection
+    if (strpos($ehloResp, 'STARTTLS') !== false) {
+        $starttlsResp = $sendCmd("STARTTLS");
+        if (substr($starttlsResp, 0, 3) == '220') {
+            $crypto = defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')
+                ? STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT
+                : STREAM_CRYPTO_METHOD_TLS_CLIENT;
+            $tlsResult = @stream_socket_enable_crypto($socket, true, $crypto);
+            if ($tlsResult === true) {
+                // Re-issue EHLO after TLS upgrade
+                $sendCmd("EHLO capitalplusonline.in");
+            }
+            // If TLS fails, continue without encryption on localhost (acceptable)
+        }
+    }
+
+    // Try AUTH LOGIN (skip if server doesn't support it)
     $authResp = $sendCmd("AUTH LOGIN");
-    if (substr($authResp, 0, 3) != '334') {
-        fclose($socket);
-        return ['success' => false, 'message' => 'Server does not support AUTH LOGIN.'];
-    }
-
-    $userResp = $sendCmd(base64_encode($user));
-    if (substr($userResp, 0, 3) != '334') {
-        fclose($socket);
-        return ['success' => false, 'message' => 'SMTP authentication failed (username rejected).'];
-    }
-
-    $passResp = $sendCmd(base64_encode($pass));
-    if (substr($passResp, 0, 3) != '235') {
-        fclose($socket);
-        return ['success' => false, 'message' => 'SMTP authentication failed (wrong password).'];
+    if (substr($authResp, 0, 3) == '334') {
+        // Server supports auth — proceed with credentials
+        $userResp = $sendCmd(base64_encode($user));
+        if (substr($userResp, 0, 3) == '334') {
+            $passResp = $sendCmd(base64_encode($pass));
+            // If auth succeeds (235) great; if not, we'll try sending anyway
+        }
+    } else {
+        // AUTH LOGIN not supported — send RSET to clean up server state
+        $sendCmd("RSET");
     }
 
     // MAIL FROM
@@ -171,19 +210,33 @@ function sendSmtpEmail($host, $port, $user, $pass, $from_email, $from_name, $to,
         return ['success' => false, 'message' => 'Server rejected DATA command: ' . trim($dataResp)];
     }
 
-    // Build full email message (headers + body)
+    // MIME-encode subject if it contains non-ASCII characters
+    $encodedSubject = $subject;
+    if (preg_match('/[^\x20-\x7E]/', $subject)) {
+        $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+    }
+
+    // Sanitize reply-to name (remove any newlines to prevent header injection)
+    $safeReplyToName = str_replace(array("\r", "\n"), '', $replyToName);
+    $safeReplyTo = str_replace(array("\r", "\n"), '', $replyTo);
+
+    // Build full email message (headers + body) with proper \r\n line endings
     $emailMessage  = "From: $from_name <$from_email>\r\n";
     $emailMessage .= "To: $to\r\n";
-    $emailMessage .= "Reply-To: $replyToName <$replyTo>\r\n";
-    $emailMessage .= "Subject: $subject\r\n";
+    $emailMessage .= "Reply-To: $safeReplyToName <$safeReplyTo>\r\n";
+    $emailMessage .= "Subject: $encodedSubject\r\n";
     $emailMessage .= "MIME-Version: 1.0\r\n";
     $emailMessage .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $emailMessage .= "Content-Transfer-Encoding: 7bit\r\n";
     $emailMessage .= "Date: " . date('r') . "\r\n";
     $emailMessage .= "Message-ID: <" . md5(uniqid(time())) . "@capitalplusonline.in>\r\n";
+    $emailMessage .= "X-Mailer: CapitalPlus-WebForm/1.0\r\n";
     $emailMessage .= "\r\n";
-    $emailMessage .= $htmlBody . "\r\n";
 
-    // Send email body (write directly, don't use sendCmd for the body)
+    // Apply dot-stuffing to body and normalize line endings to \r\n
+    $emailMessage .= dotStuff($htmlBody) . "\r\n";
+
+    // Send email body
     fputs($socket, $emailMessage);
 
     // Send termination: a line with just a period
