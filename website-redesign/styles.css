@@ -5,12 +5,12 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --primary: #D97706;       /* amber-600 */
-  --primary-dark: #B45309;  /* amber-700 */
-  --primary-light: #F59E0B; /* amber-500 */
-  --accent: #DC2626;        /* red-600 for accents */
+  --primary: #9B1B30;       /* crimson from logo */
+  --primary-dark: #7A1525;  /* darker crimson */
+  --primary-light: #E8920C; /* orange from logo */
+  --accent: #E8920C;        /* orange accent */
   --bg: #FFFFFF;
-  --bg-light: #FFF7ED;      /* orange-50 */
+  --bg-light: #FFF8F0;      /* warm cream */
   --bg-muted: #F9FAFB;      /* gray-50 */
   --text: #111827;           /* gray-900 */
   --text-secondary: #4B5563; /* gray-600 */
@@ -293,7 +293,7 @@ p  { color: var(--text-secondary); line-height: 1.7; }
 }
 .form-group input:focus, .form-group textarea:focus {
   outline: none; border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(217,119,6,.15);
+  box-shadow: 0 0 0 3px rgba(155,27,48,.15);
 }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }

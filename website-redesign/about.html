@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --purple: #7C3AED;
-            --purple-d: #6D28D9;
-            --purple-dd: #5B21B6;
-            --purple-l: #8B5CF6;
-            --purple-bg: #F5F3FF;
-            --purple-100: #EDE9FE;
-            --purple-200: #DDD6FE;
+            --purple: #9B1B30;
+            --purple-d: #7A1525;
+            --purple-dd: #5C101C;
+            --purple-l: #E8920C;
+            --purple-bg: #FFF8F0;
+            --purple-100: #FFEDD5;
+            --purple-200: #FED7AA;
             --text: #0F172A;
             --text-2: #475569;
             --text-3: #94A3B8;
@@ -44,31 +44,31 @@
         .nav-links{display:flex;align-items:center;gap:4px;height:100%;margin:0;padding:0;list-style:none}
         .nav-links>li{height:100%;display:flex;align-items:center;position:relative}
         .nav-links>li>a{display:flex;align-items:center;gap:5px;padding:6px 14px;height:auto;font-size:.92rem;font-weight:500;color:#0F172A;transition:all .15s;border-radius:100px;border:1.5px solid transparent;text-decoration:none}
-        .nav-links>li>a:hover{background:#F5F3FF}
+        .nav-links>li>a:hover{background:#FFF8F0}
         .nav-links>li>a.active{border-color:#0F172A;background:transparent}
         .nav-links>li>a svg.chev{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s}
         .nav-links>li:hover>a svg.chev{transform:rotate(180deg)}
         .mega-dd{position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 16px 48px rgba(0,0,0,.08);opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
         .nav-links>li:hover>.mega-dd{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
         .mega-inner{max-width:1100px;margin:0 auto;padding:40px;display:grid;grid-template-columns:280px 1fr;gap:48px}
-        .mega-promo{border-radius:14px;overflow:hidden;background:#F5F3FF;display:flex;flex-direction:column}
-        .mega-promo-img{height:140px;background:linear-gradient(135deg,#7C3AED,#8B5CF6);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.9);font-size:2.5rem}
+        .mega-promo{border-radius:14px;overflow:hidden;background:#FFF8F0;display:flex;flex-direction:column}
+        .mega-promo-img{height:140px;background:linear-gradient(135deg,#9B1B30,#E8920C);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.9);font-size:2.5rem}
         .mega-promo-body{padding:20px}
         .mega-promo-body h3{font-size:1rem;font-weight:800;color:#0F172A;margin-bottom:6px}
         .mega-promo-body p{font-size:.82rem;color:#475569;line-height:1.5;margin-bottom:14px}
-        .mega-promo-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:700;color:#7C3AED;transition:gap .2s;text-decoration:none}
+        .mega-promo-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:700;color:#9B1B30;transition:gap .2s;text-decoration:none}
         .mega-promo-link:hover{gap:8px}
         .mega-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
         .mega-col-head{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:16px}
         .mega-link{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.92rem;font-weight:500;color:#0F172A;transition:color .15s;text-decoration:none}
-        .mega-link:hover{color:#7C3AED}
+        .mega-link:hover{color:#9B1B30}
         .mega-link .ml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
         .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
         .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 22px;border-radius:100px;font-weight:600;font-size:.88rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;text-decoration:none}
         .btn-ghost{color:#475569;background:transparent;padding:9px 14px}
         .btn-ghost:hover{color:#0F172A}
-        .btn-primary{color:#fff;background:#7C3AED;box-shadow:0 2px 8px rgba(124,58,237,.2)}
-        .btn-primary:hover{background:#6D28D9;box-shadow:0 4px 16px rgba(124,58,237,.3)}
+        .btn-primary{color:#fff;background:#9B1B30;box-shadow:0 2px 8px rgba(155,27,48,.2)}
+        .btn-primary:hover{background:#7A1525;box-shadow:0 4px 16px rgba(155,27,48,.3)}
         .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto}
         .hamburger span{display:block;width:20px;height:2px;background:#0F172A;border-radius:2px;transition:.3s}
 
@@ -354,7 +354,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--purple) 0%, #EC4899 100%);
+            background: linear-gradient(135deg, var(--purple) 0%, #E8920C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -793,7 +793,7 @@
 
             .hero {
                 padding: 2rem 1rem;
-                background: linear-gradient(135deg, #F5F3FF 0%, white 100%);
+                background: linear-gradient(135deg, #FFF8F0 0%, white 100%);
                 background-attachment: scroll;
             }
 
@@ -818,7 +818,7 @@
             .hero h1 {
                 font-size: 1.5rem;
                 margin-bottom: 0.75rem;
-                background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+                background: linear-gradient(135deg, #9B1B30 0%, #7A1525 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
@@ -923,7 +923,7 @@
             .value-icon {
                 width: 48px;
                 height: 48px;
-                background: #F5F3FF;
+                background: #FFF8F0;
                 border-radius: 10px;
                 display: flex;
                 align-items: center;
@@ -946,7 +946,7 @@
                 margin: 1.5rem 1rem;
                 padding: 1.25rem;
                 border-radius: 12px;
-                border-left: 4px solid #7C3AED;
+                border-left: 4px solid #9B1B30;
                 background: white;
                 border: 1px solid #E2E8F0;
             }
@@ -966,7 +966,7 @@
                 margin: 1.5rem 1rem 0;
                 padding: 1.75rem 1rem;
                 border-radius: 12px;
-                background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+                background: linear-gradient(135deg, #9B1B30 0%, #7A1525 100%);
                 color: white;
                 text-align: center;
                 box-shadow: 0 12px 30px rgba(124, 58, 237, 0.2);
@@ -1060,11 +1060,11 @@
                 <div class="mega-cols">
                   <div>
                     <div class="mega-col-head">IDFC Bank Products</div>
-                    <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#7C3AED"></span> Two Wheeler Loan</a>
+                    <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#9B1B30"></span> Two Wheeler Loan</a>
                     <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#10B981"></span> Car Loans</a>
                     <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#3B82F6"></span> Commercial Vehicle Loan</a>
-                    <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#EC4899"></span> Credit Card</a>
-                    <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#F59E0B"></span> Consumer Durable Loan</a>
+                    <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#E8920C"></span> Credit Card</a>
+                    <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#E8920C"></span> Consumer Durable Loan</a>
                   </div>
                 </div>
               </div>
@@ -1107,15 +1107,15 @@
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="storyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:0.3" />
-                            <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.1" />
+                            <stop offset="0%" style="stop-color:#9B1B30;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#E8920C;stop-opacity:0.1" />
                         </linearGradient>
                     </defs>
                     <circle cx="100" cy="100" r="80" fill="url(#storyGradient)" />
-                    <circle cx="100" cy="100" r="70" fill="none" stroke="#7C3AED" stroke-width="2" opacity="0.4" />
-                    <circle cx="100" cy="100" r="50" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0.3" />
-                    <path d="M 100 50 L 130 80 L 100 100 L 70 80 Z" fill="#7C3AED" opacity="0.5" />
-                    <circle cx="100" cy="70" r="8" fill="#7C3AED" />
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#9B1B30" stroke-width="2" opacity="0.4" />
+                    <circle cx="100" cy="100" r="50" fill="none" stroke="#E8920C" stroke-width="2" opacity="0.3" />
+                    <path d="M 100 50 L 130 80 L 100 100 L 70 80 Z" fill="#9B1B30" opacity="0.5" />
+                    <circle cx="100" cy="70" r="8" fill="#9B1B30" />
                 </svg>
             </div>
         </div>

@@ -10,9 +10,9 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --purple:#7C3AED;--purple-d:#6D28D9;--purple-dd:#5B21B6;
-  --purple-l:#8B5CF6;--purple-ll:#A78BFA;
-  --purple-bg:#F5F3FF;--purple-100:#EDE9FE;--purple-200:#DDD6FE;
+  --purple:#9B1B30;--purple-d:#7A1525;--purple-dd:#5C101C;
+  --purple-l:#E8920C;--purple-ll:#F0A83C;
+  --purple-bg:#FFF8F0;--purple-100:#FFEDD5;--purple-200:#FED7AA;
   --text:#0F172A;--text-2:#475569;--text-3:#94A3B8;
   --border:#E2E8F0;--white:#FFFFFF;
   --ease:cubic-bezier(.4,0,.2,1);
@@ -34,31 +34,31 @@ ul{list-style:none}
 .nav-links{display:flex;align-items:center;gap:4px;height:100%;margin:0;padding:0;list-style:none}
 .nav-links>li{height:100%;display:flex;align-items:center;position:relative}
 .nav-links>li>a{display:flex;align-items:center;gap:5px;padding:6px 14px;height:auto;font-size:.92rem;font-weight:500;color:#0F172A;transition:all .15s;border-radius:100px;border:1.5px solid transparent;text-decoration:none}
-.nav-links>li>a:hover{background:#F5F3FF}
+.nav-links>li>a:hover{background:#FFF8F0}
 .nav-links>li>a.active{border-color:#0F172A;background:transparent}
 .nav-links>li>a svg.chev{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s}
 .nav-links>li:hover>a svg.chev{transform:rotate(180deg)}
 .mega-dd{position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 16px 48px rgba(0,0,0,.08);opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
 .nav-links>li:hover>.mega-dd{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
 .mega-inner{max-width:1100px;margin:0 auto;padding:40px;display:grid;grid-template-columns:280px 1fr;gap:48px}
-.mega-promo{border-radius:14px;overflow:hidden;background:#F5F3FF;display:flex;flex-direction:column}
-.mega-promo-img{height:140px;background:linear-gradient(135deg,#7C3AED,#8B5CF6);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.9);font-size:2.5rem}
+.mega-promo{border-radius:14px;overflow:hidden;background:#FFF8F0;display:flex;flex-direction:column}
+.mega-promo-img{height:140px;background:linear-gradient(135deg,#9B1B30,#E8920C);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.9);font-size:2.5rem}
 .mega-promo-body{padding:20px}
 .mega-promo-body h3{font-size:1rem;font-weight:800;color:#0F172A;margin-bottom:6px}
 .mega-promo-body p{font-size:.82rem;color:#475569;line-height:1.5;margin-bottom:14px}
-.mega-promo-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:700;color:#7C3AED;transition:gap .2s;text-decoration:none}
+.mega-promo-link{display:inline-flex;align-items:center;gap:4px;font-size:.85rem;font-weight:700;color:#9B1B30;transition:gap .2s;text-decoration:none}
 .mega-promo-link:hover{gap:8px}
 .mega-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .mega-col-head{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:16px}
 .mega-link{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.92rem;font-weight:500;color:#0F172A;transition:color .15s;text-decoration:none}
-.mega-link:hover{color:#7C3AED}
+.mega-link:hover{color:#9B1B30}
 .mega-link .ml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 22px;border-radius:100px;font-weight:600;font-size:.88rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;text-decoration:none}
 .btn-ghost{color:#475569;background:transparent;padding:9px 14px}
 .btn-ghost:hover{color:#0F172A}
-.btn-primary{color:#fff;background:#7C3AED;box-shadow:0 2px 8px rgba(124,58,237,.2)}
-.btn-primary:hover{background:#6D28D9;box-shadow:0 4px 16px rgba(124,58,237,.3)}
+.btn-primary{color:#fff;background:#9B1B30;box-shadow:0 2px 8px rgba(155,27,48,.2)}
+.btn-primary:hover{background:#7A1525;box-shadow:0 4px 16px rgba(155,27,48,.3)}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto}
 .hamburger span{display:block;width:20px;height:2px;background:#0F172A;border-radius:2px;transition:.3s}
 
@@ -70,7 +70,7 @@ ul{list-style:none}
 }
 .page-hero::before{
   content:'';position:absolute;top:-200px;right:-100px;width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(124,58,237,.1) 0%,transparent 70%);filter:blur(40px);pointer-events:none;
+  background:radial-gradient(circle,rgba(155,27,48,.1) 0%,transparent 70%);filter:blur(40px);pointer-events:none;
 }
 .page-hero .container{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:0 24px}
 .page-hero .partner-badge{
@@ -111,7 +111,7 @@ ul{list-style:none}
 }
 .product-card:hover{
   border-color:var(--purple-200);
-  box-shadow:0 8px 32px rgba(124,58,237,.08),0 2px 8px rgba(0,0,0,.04);
+  box-shadow:0 8px 32px rgba(155,27,48,.08),0 2px 8px rgba(0,0,0,.04);
   transform:translateY(-4px);
 }
 .product-card:hover::before{transform:scaleX(1)}
@@ -154,7 +154,7 @@ ul{list-style:none}
 }
 .bc-banner::before{
   content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(124,58,237,.15) 0%,transparent 60%);
+  background:radial-gradient(circle,rgba(155,27,48,.15) 0%,transparent 60%);
   transform:translate(-50%,-50%);pointer-events:none;
 }
 .bc-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px}
@@ -167,7 +167,7 @@ ul{list-style:none}
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
   backdrop-filter:blur(10px);transition:all .3s var(--ease);
 }
-.bc-card:hover{background:rgba(255,255,255,.08);border-color:rgba(124,58,237,.4);transform:translateY(-4px)}
+.bc-card:hover{background:rgba(255,255,255,.08);border-color:rgba(155,27,48,.4);transform:translateY(-4px)}
 .bc-card .bc-icon{font-size:2rem;margin-bottom:12px}
 .bc-card h4{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:6px}
 .bc-card p{font-size:.8rem;color:rgba(255,255,255,.5)}
@@ -311,11 +311,11 @@ ul{list-style:none}
             <div class="mega-cols">
               <div>
                 <div class="mega-col-head">IDFC Bank Products</div>
-                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#7C3AED"></span> Two Wheeler Loan</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#9B1B30"></span> Two Wheeler Loan</a>
                 <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#10B981"></span> Car Loans</a>
                 <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#3B82F6"></span> Commercial Vehicle Loan</a>
-                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#EC4899"></span> Credit Card</a>
-                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#F59E0B"></span> Consumer Durable Loan</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#E8920C"></span> Credit Card</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#E8920C"></span> Consumer Durable Loan</a>
               </div>
             </div>
           </div>
@@ -402,7 +402,7 @@ ul{list-style:none}
 
       <!-- 6. Credit Card -->
       <div class="product-card animate">
-        <div class="product-icon" style="background:#EDE9FE">💳</div>
+        <div class="product-icon" style="background:#FFEDD5">💳</div>
         <h3>Credit Card</h3>
         <p>IDFC FIRST Bank Credit Cards with lifetime free benefits, reward points, and exclusive offers. Choose the card that fits your lifestyle.</p>
         <div class="product-meta">

@@ -15,20 +15,20 @@
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --purple:   #7C3AED;
-  --purple-d: #6D28D9;
-  --purple-dd:#5B21B6;
-  --purple-l: #8B5CF6;
-  --purple-ll:#A78BFA;
-  --purple-bg:#F5F3FF;
-  --purple-100:#EDE9FE;
-  --purple-200:#DDD6FE;
+  --purple:   #9B1B30;
+  --purple-d: #7A1525;
+  --purple-dd:#5C101C;
+  --purple-l: #E8920C;
+  --purple-ll:#F0A83C;
+  --purple-bg:#FFF8F0;
+  --purple-100:#FFEDD5;
+  --purple-200:#FED7AA;
   --text:     #0F172A;
   --text-2:   #475569;
   --text-3:   #94A3B8;
   --border:   #E2E8F0;
   --white:    #FFFFFF;
-  --glow:     rgba(124,58,237,.35);
+  --glow:     rgba(155,27,48,.35);
   --radius:   16px;
   --radius-s: 10px;
   --shadow:   0 1px 3px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.04);
@@ -51,7 +51,7 @@ img{max-width:100%;display:block}
   100%{background-position:0% 50%}
 }
 .gradient-text{
-  background:linear-gradient(135deg,var(--purple),#EC4899,var(--purple-l),var(--purple));
+  background:linear-gradient(135deg,var(--purple),#E8920C,var(--purple-l),var(--purple));
   background-size:300% 300%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
@@ -61,7 +61,7 @@ img{max-width:100%;display:block}
 /* ── GLOW PULSE ── */
 @keyframes glow-pulse{
   0%,100%{box-shadow:0 0 20px var(--glow)}
-  50%{box-shadow:0 0 40px var(--glow),0 0 80px rgba(124,58,237,.15)}
+  50%{box-shadow:0 0 40px var(--glow),0 0 80px rgba(155,27,48,.15)}
 }
 
 /* ── FLOAT ── */
@@ -169,13 +169,13 @@ img{max-width:100%;display:block}
 .btn-ghost:hover{color:var(--text)}
 .btn-primary{
   color:var(--white);background:var(--purple);
-  box-shadow:0 2px 8px rgba(124,58,237,.2);
+  box-shadow:0 2px 8px rgba(155,27,48,.2);
 }
-.btn-primary:hover{background:var(--purple-d);box-shadow:0 4px 16px rgba(124,58,237,.3)}
+.btn-primary:hover{background:var(--purple-d);box-shadow:0 4px 16px rgba(155,27,48,.3)}
 .btn-lg{padding:13px 30px;font-size:.92rem;border-radius:100px}
 .btn-outline{
   color:var(--purple);background:transparent;
-  border:1.5px solid rgba(124,58,237,.3);border-radius:100px;
+  border:1.5px solid rgba(155,27,48,.3);border-radius:100px;
 }
 .btn-outline:hover{background:var(--purple-bg);border-color:var(--purple)}
 .btn-white{
@@ -197,7 +197,7 @@ img{max-width:100%;display:block}
 .hero::before{
   content:'';position:absolute;top:-200px;right:-100px;
   width:700px;height:700px;border-radius:50%;
-  background:radial-gradient(circle,rgba(124,58,237,.12) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(155,27,48,.12) 0%,transparent 70%);
   filter:blur(40px);pointer-events:none;
 }
 .hero::after{
@@ -285,7 +285,7 @@ img{max-width:100%;display:block}
   background:var(--white);border:1px solid var(--border);
   transition:all .2s var(--ease);
 }
-.dash-row:hover{border-color:var(--purple-200);box-shadow:0 2px 8px rgba(124,58,237,.06)}
+.dash-row:hover{border-color:var(--purple-200);box-shadow:0 2px 8px rgba(155,27,48,.06)}
 .dash-row-left{display:flex;align-items:center;gap:12px}
 .dash-row-icon{
   width:34px;height:34px;border-radius:8px;
@@ -342,7 +342,7 @@ img{max-width:100%;display:block}
 }
 .feature-card:hover{
   border-color:var(--purple-200);
-  box-shadow:0 8px 30px rgba(124,58,237,.08),0 2px 8px rgba(0,0,0,.04);
+  box-shadow:0 8px 30px rgba(155,27,48,.08),0 2px 8px rgba(0,0,0,.04);
   transform:translateY(-4px);
 }
 .feature-card:hover::before{transform:scaleX(1)}
@@ -419,7 +419,7 @@ img{max-width:100%;display:block}
   background:linear-gradient(135deg,var(--purple),var(--purple-d));
   display:flex;align-items:center;justify-content:center;
   font-size:1.5rem;font-weight:800;color:var(--white);
-  box-shadow:0 4px 20px rgba(124,58,237,.3);
+  box-shadow:0 4px 20px rgba(155,27,48,.3);
   position:relative;
 }
 .step-num::after{
@@ -437,7 +437,7 @@ img{max-width:100%;display:block}
 .stats::before{
   content:'';position:absolute;top:50%;left:50%;
   width:800px;height:800px;border-radius:50%;
-  background:radial-gradient(circle,rgba(124,58,237,.2) 0%,transparent 60%);
+  background:radial-gradient(circle,rgba(155,27,48,.2) 0%,transparent 60%);
   transform:translate(-50%,-50%);pointer-events:none;
 }
 .stats-inner{
@@ -457,12 +457,12 @@ img{max-width:100%;display:block}
 }
 .stat-card:hover{
   background:rgba(255,255,255,.08);
-  border-color:rgba(124,58,237,.4);
+  border-color:rgba(155,27,48,.4);
   transform:translateY(-4px);
 }
 .stat-card .number{
   font-size:clamp(2.2rem,4vw,3rem);font-weight:900;
-  background:linear-gradient(135deg,var(--purple-l),#EC4899);
+  background:linear-gradient(135deg,var(--purple-l),#E8920C);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;letter-spacing:-.02em;margin-bottom:8px;
 }
@@ -608,11 +608,11 @@ img{max-width:100%;display:block}
             <div class="mega-cols">
               <div>
                 <div class="mega-col-head">IDFC Bank Products</div>
-                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#7C3AED"></span> Two Wheeler Loan</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#9B1B30"></span> Two Wheeler Loan</a>
                 <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#10B981"></span> Car Loans</a>
                 <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#3B82F6"></span> Commercial Vehicle Loan</a>
-                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#EC4899"></span> Credit Card</a>
-                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#F59E0B"></span> Consumer Durable Loan</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#E8920C"></span> Credit Card</a>
+                <a href="products.html" class="mega-link"><span class="ml-dot" style="background:#E8920C"></span> Consumer Durable Loan</a>
               </div>
             </div>
           </div>
@@ -641,9 +641,9 @@ img{max-width:100%;display:block}
       </div>
       <div class="hero-social-proof">
         <div class="avatar-stack">
-          <div class="av" style="background:linear-gradient(135deg,#7C3AED,#EC4899)">KS</div>
+          <div class="av" style="background:linear-gradient(135deg,#9B1B30,#E8920C)">KS</div>
           <div class="av" style="background:linear-gradient(135deg,#06B6D4,#3B82F6)">AR</div>
-          <div class="av" style="background:linear-gradient(135deg,#F59E0B,#EF4444)">PM</div>
+          <div class="av" style="background:linear-gradient(135deg,#E8920C,#EF4444)">PM</div>
           <div class="av" style="background:linear-gradient(135deg,#10B981,#059669)">VD</div>
         </div>
         <p><strong>500+</strong> companies trust Capital Plus</p>
@@ -685,21 +685,21 @@ img{max-width:100%;display:block}
           <div class="dash-rows">
             <div class="dash-row">
               <div class="dash-row-left">
-                <div class="dash-row-icon" style="background:#FCE7F3"><span style="color:#EC4899">🏍️</span></div>
+                <div class="dash-row-icon" style="background:#FCE7F3"><span style="color:#E8920C">🏍️</span></div>
                 <div class="dash-row-info"><p>Two Wheeler Loan</p><span>Quick approval</span></div>
               </div>
               <div class="dash-row-amount"><p>Competitive Rates</p><span style="color:#16A34A">✓ Available</span></div>
             </div>
             <div class="dash-row">
               <div class="dash-row-left">
-                <div class="dash-row-icon" style="background:#EDE9FE"><span style="color:#7C3AED">💳</span></div>
+                <div class="dash-row-icon" style="background:#FFEDD5"><span style="color:#9B1B30">💳</span></div>
                 <div class="dash-row-info"><p>Credit Card</p><span>Lifetime free benefits</span></div>
               </div>
               <div class="dash-row-amount"><p>Exclusive Offers</p><span style="color:#16A34A">✓ Available</span></div>
             </div>
             <div class="dash-row">
               <div class="dash-row-left">
-                <div class="dash-row-icon" style="background:#FEF3C7"><span style="color:#D97706">🚗</span></div>
+                <div class="dash-row-icon" style="background:#FEF3C7"><span style="color:#E8920C">🚗</span></div>
                 <div class="dash-row-info"><p>Car Loan</p><span>Up to 10 years</span></div>
               </div>
               <div class="dash-row-amount"><p>Flexible EMI</p><span style="color:#16A34A">✓ Available</span></div>
@@ -767,7 +767,7 @@ img{max-width:100%;display:block}
       <div class="showcase-card">
         <div class="sc-header">
           <div class="sc-dot" style="background:#EF4444"></div>
-          <div class="sc-dot" style="background:#F59E0B"></div>
+          <div class="sc-dot" style="background:#E8920C"></div>
           <div class="sc-dot" style="background:#22C55E"></div>
         </div>
         <div class="sc-body">
