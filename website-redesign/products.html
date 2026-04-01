@@ -29,8 +29,8 @@ ul{list-style:none}
 .nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;transition:box-shadow .3s cubic-bezier(.4,0,.2,1)}
 .nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
 .nav-inner{max-width:1320px;width:100%;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:64px}
-.logo{font-size:1.4rem;font-weight:900;letter-spacing:-.04em;margin-right:40px;white-space:nowrap;text-decoration:none}
-.logo .c{color:#7C3AED}.logo .p{color:#0F172A}
+.logo{margin-right:40px;white-space:nowrap;text-decoration:none;display:flex;align-items:center}
+.logo img{height:36px;width:auto}
 .nav-links{display:flex;align-items:center;gap:4px;height:100%;margin:0;padding:0;list-style:none}
 .nav-links>li{height:100%;display:flex;align-items:center;position:relative}
 .nav-links>li>a{display:flex;align-items:center;gap:5px;padding:6px 14px;height:auto;font-size:.92rem;font-weight:500;color:#0F172A;transition:all .15s;border-radius:100px;border:1.5px solid transparent;text-decoration:none}
@@ -175,8 +175,8 @@ ul{list-style:none}
 /* ═══ FOOTER ═══ */
 .footer{background:var(--text);color:rgba(255,255,255,.6);padding:80px 0 32px}
 .footer-grid{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
-.footer-brand .logo{font-size:1.3rem;margin-bottom:16px}
-.footer-brand .logo .c{color:var(--purple-l)}.footer-brand .logo .p{color:rgba(255,255,255,.9)}
+.footer-brand .logo{margin-bottom:16px}
+.footer-brand .logo img{height:32px;width:auto}
 .footer-brand>p{font-size:.88rem;line-height:1.7;max-width:280px}
 .footer h4{color:rgba(255,255,255,.9);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
 .footer ul li{margin-bottom:12px}.footer ul a{font-size:.88rem;transition:color .2s}
@@ -243,7 +243,8 @@ ul{list-style:none}
 
 @media(max-width:480px){
   .nav-inner{padding:0 16px;height:56px}
-  .logo{font-size:1.2rem;margin-right:20px}
+  .logo{margin-right:20px}
+  .logo img{height:28px}
 
   .page-hero{padding:40px 16px 30px}
   .page-hero .container{padding:0 16px}
@@ -276,7 +277,8 @@ ul{list-style:none}
 
   .footer{padding:40px 16px 16px}
   .footer-grid{grid-template-columns:1fr;gap:20px;margin-bottom:24px}
-  .footer-brand .logo{font-size:1rem;margin-bottom:12px}
+  .footer-brand .logo{margin-bottom:12px}
+  .footer-brand .logo img{height:24px}
   .footer-brand>p{font-size:0.75rem;line-height:1.6}
   .footer h4{font-size:0.7rem;margin-bottom:12px}
   .footer ul li{margin-bottom:6px}
@@ -290,7 +292,7 @@ ul{list-style:none}
 <!-- ═══ NAVBAR ═══ -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="c">Capital</span><span class="p">Plus</span></a>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Capital Plus"></a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
@@ -332,7 +334,7 @@ ul{list-style:none}
 <section class="page-hero">
   <div class="container">
     <div class="partner-badge">
-      <span style="font-weight:900;font-size:1.5rem;letter-spacing:-.04em"><span style="color:var(--purple)">Capital</span><span style="color:var(--text)">Plus</span></span>
+      <img src="images/logo.png" alt="Capital Plus" style="height:40px;width:auto">
     </div>
     <h1>IDFC FIRST Bank <span class="highlight">Product List</span></h1>
     <p>As an authorized Business Correspondent of IDFC FIRST Bank, Capital Plus brings you a complete range of financial products. Apply directly — we'll connect you to the bank.</p>
@@ -429,7 +431,7 @@ ul{list-style:none}
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="logo"><span class="c">Capital</span><span class="p">Plus</span></div>
+      <div class="logo"><img src="images/logo.png" alt="Capital Plus"></div>
       <p>Authorized Business Correspondent of IDFC FIRST Bank. Modern financial solutions for India's growing businesses.</p>
     </div>
     <div>

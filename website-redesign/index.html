@@ -90,8 +90,8 @@ img{max-width:100%;display:block}
   max-width:1320px;width:100%;margin:0 auto;padding:0 40px;
   display:flex;align-items:center;height:64px;
 }
-.logo{font-size:1.4rem;font-weight:900;letter-spacing:-.04em;margin-right:40px;white-space:nowrap}
-.logo .c{color:var(--purple)}.logo .p{color:var(--text)}
+.logo{margin-right:40px;white-space:nowrap;display:flex;align-items:center}
+.logo img{height:36px;width:auto}
 
 /* Nav Links — Wise style: normal case, pill on hover/active */
 .nav-links{display:flex;align-items:center;gap:4px;height:100%;margin:0;padding:0}
@@ -506,9 +506,8 @@ img{max-width:100%;display:block}
   display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;
   margin-bottom:64px;
 }
-.footer-brand .logo{font-size:1.3rem;margin-bottom:16px}
-.footer-brand .logo .c{color:var(--purple-l)}
-.footer-brand .logo .p{color:rgba(255,255,255,.9)}
+.footer-brand .logo{margin-bottom:16px}
+.footer-brand .logo img{height:32px;width:auto}
 .footer-brand>p{font-size:.88rem;line-height:1.7;max-width:280px}
 .footer h4{
   color:rgba(255,255,255,.9);font-size:.78rem;font-weight:700;
@@ -586,7 +585,7 @@ img{max-width:100%;display:block}
 <!-- ═══════ NAVBAR ═══════ -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="c">Capital</span><span class="p">Plus</span></a>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Capital Plus"></a>
 
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 
@@ -850,7 +849,7 @@ img{max-width:100%;display:block}
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="logo"><span class="c">Capital</span><span class="p">Plus</span></div>
+      <div class="logo"><img src="images/logo.png" alt="Capital Plus"></div>
       <p>Authorized Business Correspondent of IDFC FIRST Bank. Bringing financial products to your doorstep since 2013.</p>
     </div>
     <div>
