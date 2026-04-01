@@ -46,8 +46,8 @@
     .nav{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;transition:box-shadow .3s cubic-bezier(.4,0,.2,1)}
     .nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
     .nav-inner{max-width:1320px;width:100%;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:64px}
-    .logo{font-size:1.4rem;font-weight:900;letter-spacing:-.04em;margin-right:40px;white-space:nowrap;text-decoration:none}
-    .logo .c{color:#7C3AED}.logo .p{color:#0F172A}
+    .logo{margin-right:40px;white-space:nowrap;text-decoration:none;display:flex;align-items:center}
+    .logo img{height:36px;width:auto}
     .nav-links{display:flex;align-items:center;gap:4px;height:100%;margin:0;padding:0;list-style:none}
     .nav-links>li{height:100%;display:flex;align-items:center;position:relative}
     .nav-links>li>a{display:flex;align-items:center;gap:5px;padding:6px 14px;height:auto;font-size:.92rem;font-weight:500;color:#0F172A;transition:all .15s;border-radius:100px;border:1.5px solid transparent;text-decoration:none}
@@ -581,8 +581,10 @@
       }
 
       .logo {
-        font-size: 1.2rem;
         margin-right: 20px;
+      }
+      .logo img {
+        height: 28px;
       }
 
       .hero {
@@ -778,7 +780,7 @@
   <!-- NAVBAR -->
       <nav class="nav" id="mainNav">
       <div class="nav-inner">
-        <a href="index.html" class="logo"><span class="c">Capital</span><span class="p">Plus</span></a>
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="Capital Plus"></a>
         <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
